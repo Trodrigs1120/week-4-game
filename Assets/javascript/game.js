@@ -18,11 +18,9 @@ $("#Number-Goal").text("Target Number: "+ targetNumber);
 $("#CurrentTotal").text( "Your total score is: "+ counter);
 
 for (var i = 0; i < numberOptions.length; i++) {
-  // For each iteration, we will create an CrystalImage
+ 
   CrystalImage = $("<img>");
   console.log(numberOptions[i])
-  // First each crystal will be given the class ".crystal-image".
-  // This will allow the CSS to take effect.
   CrystalImage.addClass("crystal-image");
   switch (i){
   case 0: CrystalImage.attr("src", "Assets/images/Rock1.png");
@@ -35,28 +33,18 @@ for (var i = 0; i < numberOptions.length; i++) {
   break
   }
   
-  // those satanists, you have to have the path from the html the whole time
-  // Each CrystalImage will be given a data attribute called data-crystalValue.
-  // This data attribute will be set equal to the array value.
+ 
   CrystalImage.attr("data-crystalvalue", numberOptions[i]);
-  // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-//  if (FirstTimeSetup===1)
+
 
   $("#crystals").append(CrystalImage);
   
 }
 $(".crystal-image").on("click", function() {
-  // Determining the crystal's value requires us to extract the value from the data attribute.
-  // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-  // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-  // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-  
+
   var crystalValue = ($(this).attr("data-crystalvalue"));
   crystalValue = parseInt(crystalValue);
-  // We then add the crystalValue to the user's "counter" which is a global variable.
-  // Every click, from every crystal adds to the global counter.
   counter += crystalValue;
-  // All of the same game win-lose logic applies. So the rest remains unchanged.
   $("#CurrentTotal").text( "Your total score is: "+ counter);
   if (counter === targetNumber) {
     WinCounter = WinCounter + 1;
@@ -74,14 +62,5 @@ $(".crystal-image").on("click", function() {
 
 Intialize();
 
-
-// Now for the hard part. Creating multiple crystals each with their own unique number value.
-// We begin by expanding our array to include four options.
-
-// This time, our click event applies to every single crystal on the page. Not just one.
-
 });
 
-// To do
-// Intialize function 
-// 
